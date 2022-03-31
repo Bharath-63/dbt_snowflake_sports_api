@@ -1,6 +1,6 @@
-
-      create or replace  table "DUPLICATE_DB".PUBLIC."LISTS"  as
-      (select * from(
+{{ config (
+materialized="table"
+)}}
 
 with __dbt__cte__LISTS_AB1 as (
 
@@ -64,7 +64,3 @@ select
 from __dbt__cte__LISTS_AB3
 -- LISTS from "DUPLICATE_DB".PUBLIC._AIRBYTE_RAW_LISTS
 where 1 = 1
-
-            ) order by (_AIRBYTE_EMITTED_AT)
-      );
-    alter table "DUPLICATE_DB".PUBLIC."LISTS" cluster by (_AIRBYTE_EMITTED_AT);
