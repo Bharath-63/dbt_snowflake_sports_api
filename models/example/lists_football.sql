@@ -1,6 +1,6 @@
-      create or replace  table "DUPLICATE_DB".PUBLIC."LISTS_FOOTBALL"  as
-      (select * from(
-
+{{ config (
+materialized="table"
+)}}
 with __dbt__cte__LISTS_FOOTBALL_AB1 as (
 
 -- SQL model to parse JSON blob stored in a single column and extract into separated field columns as described by the JSON Schema
@@ -98,7 +98,3 @@ select
 from __dbt__cte__LISTS_FOOTBALL_AB3
 -- FOOTBALL at lists/football from "DUPLICATE_DB".PUBLIC."LISTS"
 where 1 = 1
-
-            ) order by (_AIRBYTE_EMITTED_AT)
-      );
-    alter table "DUPLICATE_DB".PUBLIC."LISTS_FOOTBALL" cluster by (_AIRBYTE_EMITTED_AT);
